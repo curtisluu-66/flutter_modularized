@@ -1,0 +1,4 @@
+name: flutter_modularized
+packages:
+  - apps/*
+  - packages/*
