@@ -2,3 +2,9 @@ name: flutter_modularized
 packages:
   - apps/*
   - packages/*
+
+sdkPath: .fvm/flutter_sdk
+
+scripts:
+  analyze:
+    exec: dart analyze .
