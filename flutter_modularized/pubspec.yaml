@@ -1,5 +1,0 @@
-name: flutter_modularized
-environment:
-  sdk: ">=3.5.3 <4.0.0"
-dev_dependencies:
-  melos: ^6.3.2
