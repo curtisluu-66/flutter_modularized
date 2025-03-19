@@ -15,6 +15,9 @@ dependencies:
   authentication:
     path: ../../packages/authentication
 
+  core:
+    path: ../../packages/core
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
