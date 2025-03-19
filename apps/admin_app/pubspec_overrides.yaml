@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: authentication
+dependency_overrides:
+  authentication:
+    path: ../../packages/authentication
