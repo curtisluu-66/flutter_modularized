@@ -2,6 +2,8 @@ name: authentication
 description: "A new Flutter package project."
 version: 0.0.1
 
+publish_to: none
+
 environment:
   sdk: ^3.5.4
   flutter: ">=1.17.0"
@@ -9,6 +11,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  firebase_auth: 5.5.1
+  cloud_firestore: ^5.6.5
+  firebase_ui_auth: 1.16.1
 
   core:
     path: ../core

@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "1001642958460",
+    "project_id": "flutter-modularized",
+    "storage_bucket": "flutter-modularized.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001642958460:android:2f8319bc6b579d9d8cf3f9",
+        "android_client_info": {
+          "package_name": "vn.hongduc.admin_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001642958460-eprdait8qtfup0ss6qd08jjhhunjh0da.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxXqI4YX5el7I3l2gRL1bWXBTcmBVLePA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001642958460-eprdait8qtfup0ss6qd08jjhhunjh0da.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1001642958460-mu6lvp14tfl6orol0nosb9ig5j7qh5a7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "vn.hongduc.userApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001642958460:android:3c2f14c6584f500f8cf3f9",
+        "android_client_info": {
+          "package_name": "vn.hongduc.user_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001642958460-eprdait8qtfup0ss6qd08jjhhunjh0da.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxXqI4YX5el7I3l2gRL1bWXBTcmBVLePA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001642958460-eprdait8qtfup0ss6qd08jjhhunjh0da.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1001642958460-mu6lvp14tfl6orol0nosb9ig5j7qh5a7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "vn.hongduc.userApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
