@@ -22,7 +22,7 @@ class SignInCubit extends Cubit<SignInState> {
     );
 
     if (userEntity != null) {
-      if (userEntity.role == UserRole.admin) {
+      if (userEntity.role == UserRole.user) {
         AppLogger.i("You are using the correct app!");
       } else {
         AppLogger.e("Wrong app!");

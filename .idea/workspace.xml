@@ -4,10 +4,30 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbce8559-830f-4d72-95c2-1fc48e1246aa" name="Changes" comment="Build up authentication features">
+    <list default="true" id="bbce8559-830f-4d72-95c2-1fc48e1246aa" name="Changes" comment="Remove metadata contains API keys">
+      <change afterPath="$PROJECT_DIR$/apps/user_app/devtools_options.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/user_app/lib/di/dependency_inject.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/user_app/lib/presentation/router/app_router.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/user_app/lib/presentation/screens/auth/bloc/sign_in_bloc.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/user_app/lib/presentation/screens/auth/bloc/sign_in_state.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/user_app/lib/presentation/screens/auth/sign_in_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_modularized/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_modularized/.idea/flutter_modularized.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_modularized/.idea/git_toolbox_blame.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flutter_modularized/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/melos_flutter_run_user_app.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/admin_app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user_app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/admin_app/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/admin_app/lib/di/dependency_inject.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/lib/di/dependency_inject.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/admin_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/admin_app/lib/presentation/screens/auth/bloc/sign_in_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/lib/presentation/screens/auth/bloc/sign_in_bloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/admin_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user_app/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user_app/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_modularized/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_modularized/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +76,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Flutter.Flutter Run -> 'admin_app'.executor": "Debug",
+    "Flutter.Flutter Run -> 'user_app'.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -68,7 +89,7 @@
     "git-widget-placeholder": "main",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/hongduc/Learn/MiniProjects/flutter_modularized",
+    "last_opened_file_path": "/Users/hongduc/Learn/MiniProjects/flutter_modularized/apps/user_app/lib",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -76,13 +97,25 @@
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
-  <component name="RunManager" selected="Flutter.Flutter Run -&gt; 'admin_app'">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps/user_app/lib" />
+      <recent name="$PROJECT_DIR$/apps/user_app/lib/presentation" />
+      <recent name="$PROJECT_DIR$/apps/user_app/lib/di" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Flutter.Flutter Run -&gt; 'user_app'">
     <configuration name="Flutter Run -&gt; 'admin_app'" type="FlutterRunConfigurationType" factoryName="Flutter" temporary="true">
       <option name="filePath" value="$PROJECT_DIR$/apps/admin_app/lib/main.dart" />
       <method v="2" />
     </configuration>
+    <configuration name="Flutter Run -&gt; 'user_app'" type="FlutterRunConfigurationType" factoryName="Flutter" temporary="true">
+      <option name="filePath" value="$PROJECT_DIR$/apps/user_app/lib/main.dart" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Flutter.Flutter Run -&gt; 'user_app'" />
         <item itemvalue="Flutter.Flutter Run -&gt; 'admin_app'" />
       </list>
     </recent_temporary>
@@ -132,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742803806892</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Remove metadata contains API keys">
+      <option name="closed" value="true" />
+      <created>1742804127552</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1742804127552</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,6 +196,7 @@
     <MESSAGE value="Restructure" />
     <MESSAGE value="Add packages dependencies" />
     <MESSAGE value="Build up authentication features" />
-    <option name="LAST_COMMIT_MESSAGE" value="Build up authentication features" />
+    <MESSAGE value="Remove metadata contains API keys" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove metadata contains API keys" />
   </component>
 </project>
