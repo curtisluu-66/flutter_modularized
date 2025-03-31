@@ -1,3 +1,4 @@
+import 'package:authentication/domain/responses/create_user_response.dart';
 import 'package:authentication/domain/responses/verify_user_response.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -6,8 +7,7 @@ abstract class AuthRepository {
     required User? user,
   });
 
-  Future<User?> signUp({
-    required String email,
-    required String password,
+  Future<CreateUserResponse?> createUser({
+    required UserCredential? credential,
   });
 }

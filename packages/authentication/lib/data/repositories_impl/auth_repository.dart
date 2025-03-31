@@ -1,5 +1,6 @@
 import 'package:authentication/domain/entities/users.dart';
 import 'package:authentication/domain/repositories/auth_repository.dart';
+import 'package:authentication/domain/responses/create_user_response.dart';
 import 'package:authentication/domain/responses/verify_user_response.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/constants/constants.dart';
@@ -67,11 +68,55 @@ final class FBAuthRepository implements AuthRepository {
   }
 
   @override
-  Future<User?> signUp({
-    required String email,
-    required String password,
-  }) {
-    // TODO: implement signUp
-    throw UnimplementedError();
+  Future<CreateUserResponse?> createUser({
+    required UserCredential? credential,
+  }) async {
+    if (await isAdminApp) {
+      AppLogger.e("User cannot be created in admin app!");
+      return CreateUserResponse(
+        createdUser: null,
+        errorReason: CreateUserFailedReason.incorrectApp,
+      );
+    }
+
+    final user = credential?.user;
+    final userEntity = AppUser(
+      dob: Timestamp.fromDate(DateTime.now()),
+      email: user?.email,
+      fullName: user?.displayName,
+      userId: user?.uid,
+    );
+
+    try {
+      try {
+        // Store user data in Firestore
+        await FirebaseFirestore.instance
+            .collection(kUserCollectionName)
+            .doc(user?.uid)
+            .set(
+              userEntity.toJson(),
+            );
+
+        return CreateUserResponse(
+          errorReason: null,
+          createdUser: userEntity,
+        );
+      } catch (firestoreError) {
+        AppLogger.e("Error!", firestoreError);
+        // Rollback registration when storage creation failed.
+        await user?.delete();
+
+        return CreateUserResponse(
+          createdUser: null,
+          errorReason: CreateUserFailedReason.firebaseStorage,
+        );
+      }
+    } catch (authError) {
+      AppLogger.e("Error!", authError);
+      return CreateUserResponse(
+        createdUser: null,
+        errorReason: CreateUserFailedReason.firebaseAuth,
+      );
+    }
   }
 }

@@ -4,25 +4,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbce8559-830f-4d72-95c2-1fc48e1246aa" name="Changes" comment="Added boilerplate for apps">
-      <change afterPath="$PROJECT_DIR$/packages/authentication/lib/domain/responses/verify_user_response.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/lib/constants/constants.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+    <list default="true" id="bbce8559-830f-4d72-95c2-1fc48e1246aa" name="Changes" comment="Validate correct app when logged in">
+      <change afterPath="$PROJECT_DIR$/packages/authentication/lib/domain/responses/create_user_response.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/admin_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/admin_app/lib/presentation/screens/auth/bloc/sign_in_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/lib/presentation/screens/auth/bloc/sign_in_bloc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/admin_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/user_app/lib/presentation/screens/auth/bloc/sign_in_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/lib/presentation/screens/auth/bloc/sign_in_bloc.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/user_app/lib/presentation/screens/auth/sign_in_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/lib/presentation/screens/auth/sign_in_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/authentication/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/packages/authentication/.flutter-plugins" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/authentication/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/packages/authentication/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/authentication/lib/data/repositories_impl/auth_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/authentication/lib/data/repositories_impl/auth_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/authentication/lib/domain/entities/users.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/authentication/lib/domain/entities/users.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/authentication/lib/domain/repositories/auth_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/authentication/lib/domain/repositories/auth_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/authentication/lib/presentation/login/sign_in_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/authentication/lib/presentation/login/sign_in_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/authentication/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/authentication/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/lib/constants/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/constants/constants.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742961767020</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Validate correct app when logged in">
+      <option name="closed" value="true" />
+      <created>1743413476640</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1743413476640</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -201,6 +199,7 @@
     <MESSAGE value="Build up authentication features" />
     <MESSAGE value="Remove metadata contains API keys" />
     <MESSAGE value="Added boilerplate for apps" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added boilerplate for apps" />
+    <MESSAGE value="Validate correct app when logged in" />
+    <option name="LAST_COMMIT_MESSAGE" value="Validate correct app when logged in" />
   </component>
 </project>

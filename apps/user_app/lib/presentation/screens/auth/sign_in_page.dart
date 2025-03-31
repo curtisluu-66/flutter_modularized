@@ -25,7 +25,9 @@ class _SignInPageState extends State<SignInPage> {
           return auth.SignInPage(
             shouldDisplayRegisterActionSwitch: true,
             onSignedIn: _cubit.verifyUser,
-            onUserCreated: (credential) {},
+            onUserCreated: (credential) {
+              _cubit.createUser(credential);
+            },
           );
         },
       ),

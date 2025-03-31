@@ -45,6 +45,14 @@ abstract class UserEntity {
     }
   }
 
+  Map<String, dynamic> toJson() => {
+        "role": role.roleValue,
+        "username": userId,
+        "email": email,
+        "name": fullName,
+        "dob": dob,
+      };
+
   DateTime? get dobDt => dob?.toDate();
 }
 

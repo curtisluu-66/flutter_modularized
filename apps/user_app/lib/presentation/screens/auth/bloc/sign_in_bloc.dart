@@ -23,10 +23,26 @@ class SignInCubit extends Cubit<SignInState> {
     if (verifyUserResult != null &&
         verifyUserResult.verifiedUser != null &&
         verifyUserResult.errorReason == null) {
-      AppLogger.i("Log in success");
+      AppLogger.i("Log in success!");
     } else {
       AppLogger.i(
         "Log in failed, reason: ${verifyUserResult?.errorReason ?? "UNKNOWN"}",
+      );
+    }
+  }
+
+  void createUser(UserCredential credential) async {
+    final createUserResult = await _authRepository.createUser(
+      credential: credential,
+    );
+
+    if (createUserResult != null &&
+        createUserResult.createdUser != null &&
+        createUserResult.errorReason == null) {
+      AppLogger.i("Register success!");
+    } else {
+      AppLogger.i(
+        "User creation failed, reason: ${createUserResult?.errorReason ?? "UNKNOWN"}",
       );
     }
   }
