@@ -1,8 +1,8 @@
-import 'package:authentication/domain/entities/users.dart';
+import 'package:authentication/domain/responses/verify_user_response.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthRepository {
-  Future<UserEntity?> verifyLoginCredentials({
+  Future<VerifyUserResponse?> verifyLoginCredentials({
     required User? user,
   });
 

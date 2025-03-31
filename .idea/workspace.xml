@@ -4,30 +4,25 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbce8559-830f-4d72-95c2-1fc48e1246aa" name="Changes" comment="Remove metadata contains API keys">
-      <change afterPath="$PROJECT_DIR$/apps/user_app/devtools_options.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user_app/lib/di/dependency_inject.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user_app/lib/presentation/router/app_router.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user_app/lib/presentation/screens/auth/bloc/sign_in_bloc.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user_app/lib/presentation/screens/auth/bloc/sign_in_state.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user_app/lib/presentation/screens/auth/sign_in_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_modularized/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_modularized/.idea/flutter_modularized.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_modularized/.idea/git_toolbox_blame.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_modularized/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/melos_flutter_run_user_app.xml" beforeDir="false" />
+    <list default="true" id="bbce8559-830f-4d72-95c2-1fc48e1246aa" name="Changes" comment="Added boilerplate for apps">
+      <change afterPath="$PROJECT_DIR$/packages/authentication/lib/domain/responses/verify_user_response.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/lib/constants/constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/admin_app/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/admin_app/lib/di/dependency_inject.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/lib/di/dependency_inject.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/admin_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/admin_app/lib/presentation/screens/auth/bloc/sign_in_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/lib/presentation/screens/auth/bloc/sign_in_bloc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/admin_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user_app/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user_app/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/admin_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/apps/admin_app/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/user_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user_app/lib/presentation/screens/auth/bloc/sign_in_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/lib/presentation/screens/auth/bloc/sign_in_bloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user_app/lib/presentation/screens/auth/sign_in_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/lib/presentation/screens/auth/sign_in_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/user_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_app/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_modularized/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_modularized/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/authentication/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/packages/authentication/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/authentication/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/packages/authentication/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/authentication/lib/data/repositories_impl/auth_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/authentication/lib/data/repositories_impl/auth_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/authentication/lib/domain/repositories/auth_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/authentication/lib/domain/repositories/auth_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/authentication/lib/presentation/login/sign_in_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/authentication/lib/presentation/login/sign_in_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/authentication/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/authentication/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +77,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Shell Script.Melos -> Bootstrap Workspace.executor": "Debug",
+    "Shell Script.Melos -> Bootstrap Workspace.executor": "Run",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
@@ -173,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742804127552</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added boilerplate for apps">
+      <option name="closed" value="true" />
+      <created>1742961767020</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1742961767020</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -197,6 +200,7 @@
     <MESSAGE value="Add packages dependencies" />
     <MESSAGE value="Build up authentication features" />
     <MESSAGE value="Remove metadata contains API keys" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove metadata contains API keys" />
+    <MESSAGE value="Added boilerplate for apps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added boilerplate for apps" />
   </component>
 </project>

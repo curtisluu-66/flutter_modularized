@@ -1,4 +1,3 @@
-import 'package:authentication/domain/entities/users.dart';
 import 'package:authentication/domain/repositories/auth_repository.dart';
 import 'package:core/utils/logger/app_logger.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,18 +16,18 @@ class SignInCubit extends Cubit<SignInState> {
   Future<void> verifyUser(
     User? user,
   ) async {
-    final userEntity = await _authRepository.verifyLoginCredentials(
+    final verifyUserResult = await _authRepository.verifyLoginCredentials(
       user: user,
     );
 
-    if (userEntity != null) {
-      if (userEntity.role == UserRole.user) {
-        AppLogger.i("You are using the correct app!");
-      } else {
-        AppLogger.e("Wrong app!");
-      }
+    if (verifyUserResult != null &&
+        verifyUserResult.verifiedUser != null &&
+        verifyUserResult.errorReason == null) {
+      AppLogger.i("Log in success");
     } else {
-      AppLogger.i("Log in failed");
+      AppLogger.i(
+        "Log in failed, reason: ${verifyUserResult?.errorReason ?? "UNKNOWN"}",
+      );
     }
   }
 }

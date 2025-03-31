@@ -23,7 +23,7 @@ class _SignInPageState extends State<SignInPage> {
       child: Builder(
         builder: (context) {
           return auth.SignInPage(
-            shouldDisplayRegisterActionSwitch: false,
+            shouldDisplayRegisterActionSwitch: true,
             onSignedIn: _cubit.verifyUser,
             onUserCreated: (credential) {},
           );
