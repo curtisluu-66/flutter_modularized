@@ -8,3 +8,10 @@ sdkPath: .fvm/flutter_sdk
 scripts:
   analyze:
     exec: dart analyze .
+
+  generate:
+    exec:
+      concurrency: 1
+    packageFilters:
+      scope: feature_movie
+    run: flutter pub run build_runner build --delete-conflicting-outputs

@@ -38,6 +38,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
-  assets:
-    - ../../packages/feature_movie/.env
