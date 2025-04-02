@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:authentication/presentation/login/sign_in_page.dart' as auth;
+import 'package:authentication/presentation/login/sign_in_page.dart';
 import 'package:get_it/get_it.dart';
 import 'package:user_app/presentation/screens/auth/bloc/sign_in_bloc.dart';
 
@@ -22,7 +22,7 @@ class _SignInPageState extends State<SignInPage> {
       value: _cubit,
       child: Builder(
         builder: (context) {
-          return auth.SignInPage(
+          return AuthScreen(
             shouldDisplayRegisterActionSwitch: true,
             onSignedIn: _cubit.verifyUser,
             onUserCreated: (credential) {

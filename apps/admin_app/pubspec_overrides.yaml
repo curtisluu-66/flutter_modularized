@@ -1,6 +1,8 @@
-# melos_managed_dependency_overrides: authentication,core
+# melos_managed_dependency_overrides: authentication,core,feature_movie
 dependency_overrides:
   authentication:
     path: ../../packages/authentication
   core:
     path: ../../packages/core
+  feature_movie:
+    path: ../../packages/feature_movie

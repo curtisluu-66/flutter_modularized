@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart'
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({
+class AuthScreen extends StatelessWidget {
+  const AuthScreen({
     super.key,
     this.shouldDisplayRegisterActionSwitch = true,
     this.onUserCreated,

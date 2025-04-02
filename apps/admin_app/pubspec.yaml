@@ -27,6 +27,9 @@ dependencies:
   core:
     path: ../../packages/core
 
+  feature_movie:
+    path: ../../packages/feature_movie
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -35,3 +38,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - ../../packages/feature_movie/.env

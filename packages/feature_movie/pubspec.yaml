@@ -11,8 +11,14 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_dotenv: 5.2.1
+
   core:
     path: ../core
+
+flutter:
+  assets:
+    - .env
 
 dev_dependencies:
   flutter_test:

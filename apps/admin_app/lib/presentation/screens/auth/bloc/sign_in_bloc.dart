@@ -9,7 +9,7 @@ class SignInCubit extends Cubit<SignInState> {
   SignInCubit({
     required AuthRepository authRepository,
   })  : _authRepository = authRepository,
-        super(SignInState());
+        super(SignInInitialState());
 
   final AuthRepository _authRepository;
 
@@ -24,10 +24,12 @@ class SignInCubit extends Cubit<SignInState> {
         verifyUserResult.verifiedUser != null &&
         verifyUserResult.errorReason == null) {
       AppLogger.i("Log in success");
+      emit(SignInSuccess());
     } else {
       AppLogger.i(
         "Log in failed, reason: ${verifyUserResult?.errorReason ?? "UNKNOWN"}",
       );
+      emit(SignInFailed());
     }
   }
 }

@@ -1,3 +1,9 @@
 part of 'sign_in_bloc.dart';
 
-class SignInState {}
+abstract class SignInState {}
+
+class SignInInitialState extends SignInState {}
+
+class SignInSuccess extends SignInState {}
+
+class SignInFailed extends SignInState {}

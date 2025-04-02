@@ -12,7 +12,7 @@ void main() {
 
     runApp(const MyApp());
   }, (error, stack) {
-    AppLogger.e("Error!", error, stack);
+    AppLogger.e("runZoneGuarded Error!", error, stack);
   });
 }
 

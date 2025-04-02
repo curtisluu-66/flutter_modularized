@@ -1,4 +1,4 @@
-import 'package:authentication/data/repositories_impl/auth_repository.dart';
+import 'package:authentication/data/repositories_impl/fb_auth_repository.dart';
 import 'package:authentication/domain/repositories/auth_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
