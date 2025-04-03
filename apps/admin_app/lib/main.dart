@@ -25,7 +25,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'MBox Admin',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.cyan,
+          brightness: Brightness.light,
+        ),
         useMaterial3: true,
       ),
       routerConfig: AppRouter.routeConfigs,
