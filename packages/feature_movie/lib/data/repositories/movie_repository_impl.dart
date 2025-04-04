@@ -1,5 +1,6 @@
 import 'package:core/foundation/networking/models/response_data.dart';
 import 'package:feature_movie/data/datasource/movie_api.dart';
+import 'package:feature_movie/domain/entities/movie/movie.dart';
 import 'package:feature_movie/domain/repositories/movie_repository.dart';
 import 'package:feature_movie/domain/responses/search_movies_response.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -45,6 +46,18 @@ class MovieRepositoryImpl implements MovieRepository {
         apiKey: await _apiKey,
         searchTerm: searchTerm,
         page: page,
+      ),
+    );
+  }
+
+  @override
+  Future<ResponseData<Movie>> fetchMovieDetailByID({
+    required String imdbID,
+  }) async {
+    return convertToResponseData(
+      _movieApi.getMovieDetailByID(
+        apiKey: await _apiKey,
+        imdbID: imdbID,
       ),
     );
   }

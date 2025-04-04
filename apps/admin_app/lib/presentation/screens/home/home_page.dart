@@ -1,4 +1,4 @@
-import 'package:admin_app/presentation/router/app_router.dart';
+import 'package:feature_movie/presentation/router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            context.push(AppRoutes.movieBrowse);
+            context.push(FeatureMovieRoutes.movieBrowse);
           },
           child: const Text("Browse movies"),
         ),

@@ -1,5 +1,6 @@
 import 'package:core/foundation/networking/dio/dio_http_client.dart';
 import 'package:dio/dio.dart';
+import 'package:feature_movie/domain/entities/movie/movie.dart';
 import 'package:feature_movie/domain/responses/search_movies_response.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,5 +33,12 @@ abstract class MovieApi {
     @Query('apikey') required String apiKey,
     @Query('s') required String? searchTerm,
     @Query('page') int? page,
+  });
+
+  @GET('/')
+  Future<HttpResponse<Movie>> getMovieDetailByID({
+    @Query('apikey') required String apiKey,
+    @Query('i') required String? imdbID,
+    @Query('plot') String plot = "full",
   });
 }

@@ -14,7 +14,7 @@ part 'search_movie_state_notifier.g.dart';
 part 'search_movie_state_notifier.freezed.dart';
 
 @riverpod
-class SearchMovies extends _$SearchMovies {
+class SearchMoviesNotifier extends _$SearchMoviesNotifier {
   late final MovieRepository _movieRepository;
 
   KeepAliveLink? _link;
@@ -26,8 +26,8 @@ class SearchMovies extends _$SearchMovies {
     // 👇 Keep this provider alive
     _link = ref.keepAlive();
 
-    // 👇 After 30 seconds, allow Riverpod to dispose this provider
-    final timer = Timer(const Duration(seconds: 30), () {
+    // 👇 After 10 minutes, allow Riverpod to dispose this provider
+    final timer = Timer(const Duration(minutes: 10), () {
       _link?.close(); // release keepAlive
     });
 
@@ -52,20 +52,24 @@ class SearchMovies extends _$SearchMovies {
       final nextPage = current.currentPage + 1;
 
       final searchMovieResponse = await _movieRepository.searchMovies(
-          searchTerm: query, page: nextPage);
+        searchTerm: query,
+        page: nextPage,
+      );
 
       if (searchMovieResponse is ResponseSuccess) {
         final totalResult =
             int.tryParse(searchMovieResponse.data?.totalResults ?? "0") ?? 0;
         final hasMore = totalResult > (nextPage * 10);
 
-        state = AsyncValue.data(current.copyWith(
-          movies: [...current.movies, ...?searchMovieResponse.data?.search],
-          currentPage: nextPage,
-          hasMore: hasMore,
-          isLoading: false,
-          error: null,
-        ));
+        state = AsyncValue.data(
+          current.copyWith(
+            movies: [...current.movies, ...?searchMovieResponse.data?.search],
+            currentPage: nextPage,
+            hasMore: hasMore,
+            isLoading: false,
+            error: null,
+          ),
+        );
       } else {
         state = AsyncValue.data(
           current.copyWith(

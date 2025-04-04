@@ -1,4 +1,28 @@
 include: package:flutter_lints/flutter.yaml
+analyzer:
+  exclude:
+    - "**/generated_plugin_registrant.dart"
+    - "**/build/**"
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/generated/**"
+    - "**/gen/**"
+    - "**/l10n*.dart"
+    - "**/*.gen.dart"
+    - "packages/**"
+    - "env/**"
+    - "bin/templates/**"
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+  errors:
+    invalid_annotation_target: ignore
+    todo: ignore
+    fixme: ignore
+    deprecated_member_use_from_same_package: warning
+
+linter:
+  rules:
+    - always_use_package_imports
+    - require_trailing_commas
+    - always_declare_return_types
+    - avoid_print
+    - cancel_subscriptions

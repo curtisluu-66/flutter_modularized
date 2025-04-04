@@ -1,7 +1,10 @@
+import 'package:feature_movie/presentation/movie_detail/providers/movie_detail_state_notifier.dart';
+import 'package:feature_movie/presentation/router.dart';
+import 'package:feature_movie/src/ui/movie_poster_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'providers/search_movie_state_notifier.dart';
+import 'package:feature_movie/presentation/movie_browse/providers/search_movie_state_notifier.dart';
+import 'package:go_router/go_router.dart';
 
 class MovieBrowsePage extends ConsumerStatefulWidget {
   const MovieBrowsePage({super.key});
@@ -24,7 +27,9 @@ class _MovieBrowsePageState extends ConsumerState<MovieBrowsePage> {
       if (position.pixels >= position.maxScrollExtent - 100) {
         // Load more when near bottom
         if (searchTerm.isNotEmpty) {
-          ref.read(searchMoviesProvider(searchTerm).notifier).loadMore();
+          ref
+              .read(searchMoviesNotifierProvider(searchTerm).notifier)
+              .loadMore();
         }
       }
     });
@@ -38,8 +43,9 @@ class _MovieBrowsePageState extends ConsumerState<MovieBrowsePage> {
 
   @override
   Widget build(BuildContext context) {
-    final searchState =
-        searchTerm.isEmpty ? null : ref.watch(searchMoviesProvider(searchTerm));
+    final searchState = searchTerm.isEmpty
+        ? null
+        : ref.watch(searchMoviesNotifierProvider(searchTerm));
 
     return Scaffold(
       appBar: AppBar(
@@ -79,9 +85,61 @@ class _MovieBrowsePageState extends ConsumerState<MovieBrowsePage> {
                     itemBuilder: (context, index) {
                       if (index < state.movies.length) {
                         final movie = state.movies[index];
-                        return ListTile(
-                          title: Text(movie.title),
-                          subtitle: Text(movie.year ?? "-1970"),
+                        return Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: GestureDetector(
+                            behavior: HitTestBehavior.opaque,
+                            onTap: () {
+                              if (movie.imdbID != null) {
+                                ref.read(
+                                  movieDetailNotifierProvider(movie.imdbID!),
+                                );
+
+                                context.push(
+                                  FeatureMovieRoutes.movieDetail,
+                                  extra: movie,
+                                );
+                              }
+                            },
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  flex: 2,
+                                  child: MoviePosterWidget(
+                                    poster: movie.poster,
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  flex: 3,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: [
+                                      Text(
+                                        movie.title,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                        ),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                      Text(
+                                        movie.year ?? "1970",
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 13,
+                                        ),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         );
                       } else {
                         return Padding(
