@@ -1,6 +1,6 @@
-import 'package:core/foundation/networking/dio/dio_http_client.dart';
-import 'package:feature_movie/data/datasource/movie_api.dart';
+import 'package:admin_app/presentation/router/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 part 'bloc/home_bloc.dart';
 part 'bloc/home_state.dart';
@@ -28,13 +28,9 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            final httpClient =
-                DioHttpClient(baseUrl: "https://www.omdbapi.com");
-            final movieApi = MovieApi(httpClient);
-
-            movieApi.searchMovies(apiKey: "af657582", searchTerm: "John");
+            context.push(AppRoutes.movieBrowse);
           },
-          child: const Text("Click me"),
+          child: const Text("Browse movies"),
         ),
       ),
     );

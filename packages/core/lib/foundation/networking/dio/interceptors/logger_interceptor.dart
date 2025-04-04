@@ -39,5 +39,7 @@ class LoggerInterceptor extends Interceptor {
       "\nStackTrace: ${err.stackTrace}"
       "\nResponse: ${json.encode(err.response?.data ?? '')}",
     );
+
+    super.onError(err, handler);
   }
 }

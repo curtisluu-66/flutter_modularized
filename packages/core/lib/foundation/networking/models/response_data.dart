@@ -7,6 +7,7 @@ Future<ResponseData<T>> convertToResponseData<T>(
   Future<HttpResponse<T>> dioAction,
 ) async {
   HttpResponse<T>? httpResponse;
+
   try {
     httpResponse = await dioAction;
 
@@ -26,17 +27,17 @@ Future<ResponseData<T>> convertToResponseData<T>(
 
 abstract class ResponseData<T> {
   final HttpResponse<T>? originalResponse;
+  final T? data;
 
   ResponseData({
     this.originalResponse,
+    this.data,
   });
 }
 
 class ResponseSuccess<T> extends ResponseData<T> {
-  final T? data;
-
   ResponseSuccess({
-    required this.data,
+    super.data,
     super.originalResponse,
   });
 }
