@@ -1,13 +1,12 @@
 import 'dart:async';
 
 import 'package:core/foundation/networking/models/response_data.dart';
-import 'package:core/utils/logger/app_logger.dart';
-import 'package:feature_movie/data/repositories/movie_repository_impl.dart';
+import 'package:core/foundation/riverpod_base/time_base_caching.dart';
 import 'package:feature_movie/domain/entities/movie/movie.dart';
 import 'package:feature_movie/domain/repositories/movie_repository.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:feature_movie/data/repository_providers.dart';
 
 part 'search_movie_state.dart';
 part 'search_movie_state_notifier.g.dart';
@@ -17,28 +16,11 @@ part 'search_movie_state_notifier.freezed.dart';
 class SearchMoviesNotifier extends _$SearchMoviesNotifier {
   late final MovieRepository _movieRepository;
 
-  KeepAliveLink? _link;
-
   @override
   FutureOr<SearchMovieState> build(String query) async {
+    ref.cacheFor(const Duration(minutes: 5));
+
     _movieRepository = await ref.watch(movieRepositoryProvider.future);
-
-    // 👇 Keep this provider alive
-    _link = ref.keepAlive();
-
-    // 👇 After 10 minutes, allow Riverpod to dispose this provider
-    final timer = Timer(const Duration(minutes: 10), () {
-      _link?.close(); // release keepAlive
-    });
-
-    // Cancel timer if disposed early
-    ref.onDispose(() {
-      AppLogger.i(
-        "[SearchMoviesStateNotifier] Cache result for term \"$query\" cache has been invalidated!",
-      );
-      timer.cancel();
-    });
-
     return _initialFetch();
   }
 

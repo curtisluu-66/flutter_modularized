@@ -4,17 +4,6 @@ import 'package:feature_movie/domain/entities/movie/movie.dart';
 import 'package:feature_movie/domain/repositories/movie_repository.dart';
 import 'package:feature_movie/domain/responses/search_movies_response.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-part 'movie_repository_impl.g.dart';
-
-@riverpod
-Future<MovieRepository> movieRepository(Ref ref) async {
-  return MovieRepositoryImpl(
-    movieApi: await ref.watch(movieApiProvider.future),
-  );
-}
 
 class MovieRepositoryImpl implements MovieRepository {
   MovieRepositoryImpl({

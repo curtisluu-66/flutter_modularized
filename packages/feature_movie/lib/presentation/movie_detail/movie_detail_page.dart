@@ -1,3 +1,4 @@
+import 'package:core/ui/components/loading_skeleton.dart';
 import 'package:feature_movie/domain/entities/movie/movie.dart';
 import 'package:feature_movie/presentation/movie_detail/providers/movie_detail_state_notifier.dart';
 import 'package:feature_movie/src/ui/movie_poster_widget.dart';
@@ -25,9 +26,13 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Detail"),
+        title: FittedBox(
+          child: Text(
+            widget.movieShortInfo?.title ?? "-",
+          ),
+        ),
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
@@ -58,12 +63,21 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
                     const SizedBox(height: 4),
                     movieDetailState.when(
                       data: (state) {
-                        return Text(
-                          state.released ?? "",
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
-                          ),
+                        return Column(
+                          children: [
+                            Text(
+                              state.movie?.title ?? "",
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            const LoadingSkeleton(
+                              height: 20,
+                              width: 100,
+                            ),
+                          ],
                         );
                       },
                       error: (error, _) => Text("Error: $error"),
@@ -73,6 +87,78 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
                 ),
               ),
             ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: movieDetailState.when(
+        data: (state) {
+          return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+              child: switch (state.doesMovieExist) {
+                null => const LoadingSkeleton(
+                    widthFactor: 1,
+                    height: 48,
+                    borderRadius: 24,
+                  ),
+                true => Row(
+                    children: [
+                      Expanded(
+                        child: FilledButton(
+                          onPressed: null,
+                          style: FilledButton.styleFrom(
+                            fixedSize: const Size.fromHeight(48),
+                          ),
+                          child: const Text(
+                            "Movie already published",
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      IconButton(
+                        onPressed: () {
+                          // TODO(dev): implement more actions
+                        },
+                        icon: const Icon(Icons.more_vert),
+                      ),
+                    ],
+                  ),
+                false => FilledButton.icon(
+                    onPressed: () {
+                      if (state.movie != null) {
+                        if (state.doesMovieExist == false) {
+                          ref
+                              .read(
+                                movieDetailNotifierProvider(
+                                  widget.movieShortInfo?.imdbID ?? "",
+                                ).notifier,
+                              )
+                              .addMovie(movie: state.movie!);
+                        }
+                      }
+                    },
+                    label: Text(
+                      state.doesMovieExist == false
+                          ? "Publish this movie"
+                          : "Movie already published",
+                      style: const TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+                    icon: const Icon(Icons.add),
+                    iconAlignment: IconAlignment.end,
+                    style: FilledButton.styleFrom(
+                      fixedSize: const Size.fromHeight(48),
+                    ),
+                  ),
+              });
+        },
+        error: (_, __) => const SizedBox.shrink(),
+        loading: () => const Padding(
+          padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+          child: LoadingSkeleton(
+            widthFactor: 1,
+            height: 48,
+            borderRadius: 24,
           ),
         ),
       ),

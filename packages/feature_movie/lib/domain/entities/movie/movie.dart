@@ -6,6 +6,7 @@ part 'movie.freezed.dart';
 
 @freezed
 class Movie with _$Movie {
+  @JsonSerializable(explicitToJson: true)
   const factory Movie({
     @JsonKey(name: 'Title') required String title,
     @JsonKey(name: 'Year') String? year,
@@ -32,7 +33,10 @@ class Movie with _$Movie {
     @JsonKey(name: 'Production') String? production,
     @JsonKey(name: 'Website') String? website,
     @JsonKey(name: 'Response') String? response,
-    String? error,
+
+    // MBox custom fields
+    @Default(false) bool? isEditorChoice,
+    @Default(0) int? likesCount,
   }) = _Movie;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);

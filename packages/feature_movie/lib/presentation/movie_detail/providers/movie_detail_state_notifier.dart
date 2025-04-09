@@ -1,45 +1,35 @@
 import 'dart:async';
 
 import 'package:core/foundation/networking/models/response_data.dart';
+import 'package:core/foundation/riverpod_base/time_base_caching.dart';
 import 'package:core/utils/logger/app_logger.dart';
-import 'package:feature_movie/data/repositories/movie_repository_impl.dart';
+import 'package:feature_movie/data/repository_providers.dart';
 import 'package:feature_movie/domain/entities/movie/movie.dart';
+import 'package:feature_movie/domain/repositories/mbox_movies_repository.dart';
 import 'package:feature_movie/domain/repositories/movie_repository.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+part 'movie_detail_state.dart';
 part 'movie_detail_state_notifier.g.dart';
+part 'movie_detail_state_notifier.freezed.dart';
 
 @riverpod
 class MovieDetailNotifier extends _$MovieDetailNotifier {
   late final MovieRepository _movieRepository;
-
-  KeepAliveLink? _link;
+  late final MBoxMoviesRepository _mBoxMoviesRepository;
 
   @override
-  FutureOr<Movie> build(String imdbID) async {
+  FutureOr<MovieDetailState> build(String imdbID) async {
+    ref.cacheFor(const Duration(minutes: 5));
+
     _movieRepository = await ref.watch(movieRepositoryProvider.future);
-
-    // 👇 Keep this provider alive
-    _link = ref.keepAlive();
-
-    // 👇 After 10 minutes, allow Riverpod to dispose this provider
-    final timer = Timer(const Duration(minutes: 10), () {
-      _link?.close(); // release keepAlive
-    });
-
-    // Cancel timer if disposed early
-    ref.onDispose(() {
-      AppLogger.i(
-        "[MovieDetailStateNotifier] Cache result for film ID \"$imdbID\" cache has been invalidated!",
-      );
-      timer.cancel();
-    });
+    _mBoxMoviesRepository = await ref.watch(mBoxMoviesRepositoryProvider);
 
     return fetchMovieDetails(imdbID);
   }
 
-  Future<Movie> fetchMovieDetails(String imdbID) async {
+  Future<MovieDetailState> fetchMovieDetails(String imdbID) async {
     try {
       // Only for simulate purpose.
       state = const AsyncValue.loading();
@@ -50,12 +40,23 @@ class MovieDetailNotifier extends _$MovieDetailNotifier {
 
       if (movieDetailResponse is ResponseSuccess &&
           movieDetailResponse.data != null) {
+        bool? doesMovieExist;
+
+        if (movieDetailResponse.data!.imdbID != null) {
+          doesMovieExist = await _mBoxMoviesRepository.doesMovieExist(
+            imdbID: movieDetailResponse.data!.imdbID!,
+          );
+        }
+
         state = AsyncValue.data(
-          movieDetailResponse.data!,
+          MovieDetailState(
+            movie: movieDetailResponse.data,
+            doesMovieExist: doesMovieExist,
+          ),
         );
       } else {
         state = AsyncValue.error(
-          movieDetailResponse.data?.error ?? "Unexpected Error!",
+          "Unexpected Error!",
           StackTrace.current,
         );
       }
@@ -65,5 +66,23 @@ class MovieDetailNotifier extends _$MovieDetailNotifier {
     }
 
     return state.value!;
+  }
+
+  void addMovie({required Movie movie}) async {
+    if (!state.hasValue) return;
+    final snapshot = state;
+
+    state = AsyncValue.data(
+      snapshot.value!.copyWith(
+        doesMovieExist: null,
+      ),
+    );
+
+    state = AsyncValue.data(
+      snapshot.value!.copyWith(
+        doesMovieExist:
+            await _mBoxMoviesRepository.addMovie(movie: movie) ? true : null,
+      ),
+    );
   }
 }

@@ -37,8 +37,10 @@ final class FBAuthRepository implements AuthRepository {
     if (user == null) return null;
 
     try {
-      final matchedUser =
-          await _firebaseFirestore.collection("user").doc(user.uid).get();
+      final matchedUser = await _firebaseFirestore
+          .collection(FirestoreConstants.kUserCollectionName)
+          .doc(user.uid)
+          .get();
 
       if (matchedUser.exists && matchedUser.data() != null) {
         final verifiedUser = UserEntity.fromJson(matchedUser.data()!);
@@ -91,7 +93,7 @@ final class FBAuthRepository implements AuthRepository {
       try {
         // Store user data in Firestore
         await FirebaseFirestore.instance
-            .collection(kUserCollectionName)
+            .collection(FirestoreConstants.kUserCollectionName)
             .doc(user?.uid)
             .set(
               userEntity.toJson(),
