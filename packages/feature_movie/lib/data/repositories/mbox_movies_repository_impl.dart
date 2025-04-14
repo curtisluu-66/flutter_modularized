@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/constants/constants.dart';
 import 'package:core/utils/logger/app_logger.dart';
@@ -45,5 +47,18 @@ class MBoxMoviesRepositoryImpl implements MBoxMoviesRepository {
       AppLogger.simpleE("Check movie existence failed!", err, stacktrace);
       return null;
     }
+  }
+
+  @override
+  Future<Movie?> getMovie({required String imdbID}) async {
+    final db = FirebaseFirestore.instance;
+
+    final doc = await db
+        .collection(FirestoreConstants.kMovieCollectionName)
+        .doc(imdbID)
+        .get()
+        .timeout(FirestoreConstants.fetchTimeout);
+
+    return doc.exists ? Movie.fromJson(doc.data()!) : null;
   }
 }

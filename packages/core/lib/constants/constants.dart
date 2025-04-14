@@ -1,4 +1,22 @@
+import 'dart:async';
+import 'package:package_info_plus/package_info_plus.dart';
+
 const kAdminAppPackageName = "vn.hongduc.admin_app";
+
+bool? _kIsAdminApp;
+
+FutureOr<bool> get kIsAdminApp async {
+  try {
+    if (_kIsAdminApp == null) {
+      final packageInfo = await PackageInfo.fromPlatform();
+      _kIsAdminApp = packageInfo.packageName == kAdminAppPackageName;
+    }
+
+    return _kIsAdminApp!;
+  } catch (_) {
+    return false;
+  }
+}
 
 // Firestore database names
 class FirestoreConstants {

@@ -17,7 +17,8 @@ dependencies:
   dio: 5.7.0
   retrofit: 4.4.2
   shimmer: 3.0.0
-  
+  package_info_plus: 8.3.0
+
   ## Riverpod
   hooks_riverpod: 2.6.1
   flutter_riverpod: 2.6.1

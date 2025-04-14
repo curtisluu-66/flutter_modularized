@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:feature_movie/domain/entities/movie/movie.dart';
 
 abstract class MBoxMoviesRepository {
@@ -21,6 +23,12 @@ abstract class MBoxMoviesRepository {
   /// Check if the movie has already added to database.
   /// Return null if operation result is unknown.
   Future<bool?> doesMovieExist({
+    required String imdbID,
+  });
+
+  /// Get a movie detail from the database.
+  /// You must handle error case.
+  Future<Movie?> getMovie({
     required String imdbID,
   });
 }

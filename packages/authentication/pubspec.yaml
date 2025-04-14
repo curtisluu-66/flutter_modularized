@@ -16,7 +16,6 @@ dependencies:
   firebase_auth: 5.5.1
   cloud_firestore: 5.6.5
   firebase_ui_auth: 1.16.1
-  package_info_plus: 8.3.0
 
   # Module dependencies
   core:

@@ -18,11 +18,21 @@ class MovieDetailPage extends ConsumerStatefulWidget {
 }
 
 class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
+  MovieDetailNotifierProvider get provider =>
+      movieDetailNotifierProvider(widget.movieShortInfo?.imdbID ?? "");
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(provider.notifier).reloadDataIfNeeded();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final movieDetailState = ref.watch(
-      movieDetailNotifierProvider(widget.movieShortInfo?.imdbID ?? ""),
-    );
+    final movieDetailState = ref.watch(provider);
 
     return Scaffold(
       appBar: AppBar(
@@ -32,125 +42,124 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 12),
-              Center(
-                child: LimitedBox(
-                  maxHeight: MediaQuery.of(context).size.height * 0.4,
-                  child: MoviePosterWidget(
-                    poster: widget.movieShortInfo?.poster,
-                    borderRadius: 12,
+      body: RefreshIndicator(
+        onRefresh: ref.read(provider.notifier).refreshData,
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 12),
+                Center(
+                  child: LimitedBox(
+                    maxHeight: MediaQuery.of(context).size.height * 0.4,
+                    child: MoviePosterWidget(
+                      poster: widget.movieShortInfo?.poster,
+                      borderRadius: 12,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 24),
-              Center(
-                child: Column(
-                  children: [
-                    Text(
-                      widget.movieShortInfo?.title ?? "-",
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20,
+                const SizedBox(height: 24),
+                Center(
+                  child: Column(
+                    children: [
+                      Text(
+                        widget.movieShortInfo?.title ?? "-",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 4),
-                    movieDetailState.when(
-                      data: (state) {
-                        return Column(
-                          children: [
-                            Text(
-                              state.movie?.title ?? "",
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14,
+                      const SizedBox(height: 4),
+                      movieDetailState.when(
+                        data: (state) {
+                          return Column(
+                            children: [
+                              Text(
+                                state.movie?.title ?? "",
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 4),
-                            const LoadingSkeleton(
-                              height: 20,
-                              width: 100,
-                            ),
-                          ],
-                        );
-                      },
-                      error: (error, _) => Text("Error: $error"),
-                      loading: () => const CircularProgressIndicator(),
-                    ),
-                  ],
+                              const SizedBox(height: 4),
+                              const LoadingSkeleton(
+                                height: 20,
+                                width: 100,
+                              ),
+                            ],
+                          );
+                        },
+                        error: (error, _) => Text("Error: $error"),
+                        loading: () => const CircularProgressIndicator(),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
       bottomNavigationBar: movieDetailState.when(
         data: (state) {
           return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-              child: switch (state.doesMovieExist) {
-                null => const LoadingSkeleton(
-                    widthFactor: 1,
-                    height: 48,
-                    borderRadius: 24,
-                  ),
-                true => Row(
-                    children: [
-                      Expanded(
-                        child: FilledButton(
-                          onPressed: null,
-                          style: FilledButton.styleFrom(
-                            fixedSize: const Size.fromHeight(48),
-                          ),
-                          child: const Text(
-                            "Movie already published",
-                          ),
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+            child: switch (state.doesMovieExist) {
+              null => const LoadingSkeleton(
+                  widthFactor: 1,
+                  height: 48,
+                  borderRadius: 24,
+                ),
+              true => Row(
+                  children: [
+                    Expanded(
+                      child: FilledButton(
+                        onPressed: null,
+                        style: FilledButton.styleFrom(
+                          fixedSize: const Size.fromHeight(48),
+                        ),
+                        child: const Text(
+                          "Movie already published",
                         ),
                       ),
-                      const SizedBox(width: 16),
-                      IconButton(
-                        onPressed: () {
-                          // TODO(dev): implement more actions
-                        },
-                        icon: const Icon(Icons.more_vert),
-                      ),
-                    ],
-                  ),
-                false => FilledButton.icon(
-                    onPressed: () {
-                      if (state.movie != null) {
-                        if (state.doesMovieExist == false) {
-                          ref
-                              .read(
-                                movieDetailNotifierProvider(
-                                  widget.movieShortInfo?.imdbID ?? "",
-                                ).notifier,
-                              )
-                              .addMovie(movie: state.movie!);
-                        }
+                    ),
+                    const SizedBox(width: 16),
+                    IconButton(
+                      onPressed: () {
+                        // TODO(dev): implement more actions
+                      },
+                      icon: const Icon(Icons.more_vert),
+                    ),
+                  ],
+                ),
+              false => FilledButton.icon(
+                  onPressed: () {
+                    if (state.movie != null) {
+                      if (state.doesMovieExist == false) {
+                        ref
+                            .read(provider.notifier)
+                            .addMovie(movie: state.movie!);
                       }
-                    },
-                    label: Text(
-                      state.doesMovieExist == false
-                          ? "Publish this movie"
-                          : "Movie already published",
-                      style: const TextStyle(
-                        fontSize: 15,
-                      ),
-                    ),
-                    icon: const Icon(Icons.add),
-                    iconAlignment: IconAlignment.end,
-                    style: FilledButton.styleFrom(
-                      fixedSize: const Size.fromHeight(48),
+                    }
+                  },
+                  label: const Text(
+                    "Publish this movie",
+                    style: TextStyle(
+                      fontSize: 15,
                     ),
                   ),
-              });
+                  icon: const Icon(Icons.add),
+                  iconAlignment: IconAlignment.end,
+                  style: FilledButton.styleFrom(
+                    fixedSize: const Size.fromHeight(48),
+                  ),
+                ),
+            },
+          );
         },
         error: (_, __) => const SizedBox.shrink(),
         loading: () => const Padding(

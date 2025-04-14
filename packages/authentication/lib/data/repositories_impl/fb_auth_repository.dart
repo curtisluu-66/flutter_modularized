@@ -6,7 +6,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/constants/constants.dart';
 import 'package:core/utils/logger/app_logger.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 final class FBAuthRepository implements AuthRepository {
   FBAuthRepository({
@@ -14,21 +13,6 @@ final class FBAuthRepository implements AuthRepository {
   }) : _firebaseFirestore = firebaseFirestore;
 
   final FirebaseFirestore _firebaseFirestore;
-
-  bool? _kIsAdminApp;
-
-  Future<bool> get isAdminApp async {
-    try {
-      if (_kIsAdminApp == null) {
-        final packageInfo = await PackageInfo.fromPlatform();
-        _kIsAdminApp = packageInfo.packageName == kAdminAppPackageName;
-      }
-
-      return _kIsAdminApp!;
-    } catch (_) {
-      return false;
-    }
-  }
 
   @override
   Future<VerifyUserResponse?> verifyLoginCredentials({
@@ -46,7 +30,7 @@ final class FBAuthRepository implements AuthRepository {
         final verifiedUser = UserEntity.fromJson(matchedUser.data()!);
 
         final didUserMatchApp =
-            await isAdminApp == (verifiedUser.role == UserRole.admin);
+            await kIsAdminApp == (verifiedUser.role == UserRole.admin);
 
         return VerifyUserResponse(
           errorReason:
@@ -73,7 +57,7 @@ final class FBAuthRepository implements AuthRepository {
   Future<CreateUserResponse?> createUser({
     required UserCredential? credential,
   }) async {
-    if (await isAdminApp) {
+    if (await kIsAdminApp) {
       AppLogger.e("User cannot be created in admin app!");
       return CreateUserResponse(
         createdUser: null,
