@@ -13,24 +13,43 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    super.initState();
-
-    Future.microtask(() {
-      // Do computation
-    });
+  void _navigateToMovieBrowse() {
+    context.push(FeatureMovieRoutes.movieBrowse);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () async {
-            context.push(FeatureMovieRoutes.movieBrowse);
-          },
-          child: const Text("Browse movies"),
+      appBar: AppBar(
+        title: Image.asset(
+          "assets/mbox_logo.png",
+          package: "core",
+          width: 120,
+          fit: BoxFit.contain,
+        ),
+        centerTitle: false,
+        toolbarHeight: kToolbarHeight + 16,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: 36),
+            ElevatedButton.icon(
+              onPressed: _navigateToMovieBrowse,
+              icon: const Icon(Icons.movie),
+              label: const Text('Browse Movies'),
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 14,
+                ),
+                textStyle: const TextStyle(fontSize: 16),
+              ),
+            ),
+          ],
         ),
       ),
     );

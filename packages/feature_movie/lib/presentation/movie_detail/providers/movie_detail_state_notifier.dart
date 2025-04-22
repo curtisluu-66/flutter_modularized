@@ -57,7 +57,7 @@ class MovieDetailNotifier extends _$MovieDetailNotifier {
     if (state.isLoading) return;
 
     try {
-      state = const AsyncValue.loading();
+      // state = const AsyncValue.loading();
       final fetchMovieResult = await _fetchMovieDetail();
       state = AsyncValue.data(
         MovieDetailState(
