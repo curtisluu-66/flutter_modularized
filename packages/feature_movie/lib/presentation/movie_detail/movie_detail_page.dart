@@ -203,6 +203,22 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
                         value: movie.actors!,
                       ),
 
+                    if (movie.language != null)
+                      _InfoLine(
+                        title: "Language",
+                        value: movie.language!,
+                      ),
+                    if (movie.country != null)
+                      _InfoLine(
+                        title: "Country",
+                        value: movie.country!,
+                      ),
+                    if (movie.awards != null)
+                      _InfoLine(
+                        title: "Awards",
+                        value: movie.awards!,
+                      ),
+
                     const SizedBox(height: 16),
 
                     /// Ratings

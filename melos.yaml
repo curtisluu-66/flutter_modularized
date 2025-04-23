@@ -9,6 +9,9 @@ scripts:
   analyze:
     exec: dart analyze .
 
+  clear:
+    exec: flutter clean
+
   generate:
     exec:
       concurrency: 1

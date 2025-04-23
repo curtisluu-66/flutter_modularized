@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:package_info_plus/package_info_plus.dart';
 
-const kAdminAppPackageName = "vn.hongduc.admin_app";
+final kAdminAppPackageName =
+    Platform.isIOS ? "vn.hongduc.adminApp" : "vn.hongduc.admin_app";
 
 bool? _kIsAdminApp;
 

@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton.icon(
               onPressed: _navigateToMovieBrowse,
               icon: const Icon(Icons.movie),
-              label: const Text('Browse Movies'),
+              label: const Text('Browse OMDB Movies'),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 24,
